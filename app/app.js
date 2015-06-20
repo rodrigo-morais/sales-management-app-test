@@ -5,10 +5,18 @@ import ngRoute from 'angular-route';
 import angularAMD from 'angularAMD';
 import angularCss from 'angularCSS';
 import ngResource from 'angular-resource';
+import LocalStorageModule from 'angular-local-storage';
 import bootstrap from 'bootstrap';
 import footerDirective from "components/footer/directives/footerDirective";
 
-let app = angular.module('myApp', ['ngRoute', 'ngResource', 'door3.css']);
+let app = angular.module('myApp', ['ngRoute', 'ngResource', 'door3.css', 'LocalStorageModule']);
+
+app.config(function (localStorageServiceProvider) {
+    localStorageServiceProvider
+        .setPrefix('myApp')
+        .setStorageType('sessionStorage')
+        .setNotify(false, false);
+});
 
 app.config([
   '$routeProvider',

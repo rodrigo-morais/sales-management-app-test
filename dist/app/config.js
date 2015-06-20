@@ -3,7 +3,7 @@ define(["exports", "module"], function (exports, module) {
 
     var config = (function () {
         return {
-            url: "https://localhost:8080/"
+            url: "http://localhost:8080/"
         };
     })();
 

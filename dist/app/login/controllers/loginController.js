@@ -16,12 +16,20 @@ define(["exports", "app", "login/services/loginService"], function (exports, _ap
     var LoginService = _loginServicesLoginService.LoginService;
 
     var LoginController = (function () {
-        function LoginController(loginService) {
+        function LoginController($location, loginService, localStorageService) {
             _classCallCheck(this, LoginController);
 
             this._service = loginService;
+            this._location = $location;
+            this._localStorageService = localStorageService;
             this.userName = "";
             this.password = "";
+
+            if (this._localStorageService.isSupported) {
+                if (this._localStorageService.get("sessionId") !== null) {
+                    this._location.path("/home");
+                }
+            }
         }
 
         _createClass(LoginController, {
@@ -33,9 +41,18 @@ define(["exports", "app", "login/services/loginService"], function (exports, _ap
             },
             login: {
                 value: function login() {
-                    this._service.post(this.userName, this.password);
-
-                    this._clean();
+                    var _this = this;
+                    this._service.post(this.userName, this.password).then(function (data) {
+                        if (data.loginSucceeded) {
+                            if (_this._localStorageService.isSupported) {
+                                _this._localStorageService.set("userName", _this.userName);
+                                _this._localStorageService.set("sessionId", data.sessionId);
+                                _this._location.path("/home");
+                            }
+                        } else {
+                            _this._clean();
+                        }
+                    });
                 }
             }
         });
@@ -43,7 +60,7 @@ define(["exports", "app", "login/services/loginService"], function (exports, _ap
         return LoginController;
     })();
 
-    LoginController.$inject = ["loginService"];
+    LoginController.$inject = ["$location", "loginService", "localStorageService"];
 
     app.controller("loginController", LoginController).service("loginService", LoginService);
 
