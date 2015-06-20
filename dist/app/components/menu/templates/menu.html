@@ -1,0 +1,17 @@
+<div class="menu">
+    <div class="title">
+        Charts
+    </div>
+    <ul>
+        <li
+            data-ng:repeat="menu in menus"
+            data-ng:click="select(menu)"
+        >
+            <a
+                data-ng:class="{'selected': menu.selected}"
+            >
+                {{ menu.text }}
+            </a>
+        </li>
+    </ul>
+</div>

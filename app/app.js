@@ -8,6 +8,7 @@ import ngResource from 'angular-resource';
 import LocalStorageModule from 'angular-local-storage';
 import bootstrap from 'bootstrap';
 import footerDirective from "components/footer/directives/footerDirective";
+import rmMenuDirective from "components/menu/directives/rmMenuDirective";
 
 let app = angular.module('myApp', ['ngRoute', 'ngResource', 'door3.css', 'LocalStorageModule']);
 
@@ -45,6 +46,8 @@ app.config([
   }
 ]);
 
-app.directive('footerPage', [footerDirective]);
+app
+    .directive('footerPage', [footerDirective])
+    .directive('rmMenu', [rmMenuDirective]);
 
 return angularAMD.bootstrap(app);

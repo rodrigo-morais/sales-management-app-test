@@ -5,6 +5,7 @@ module.exports = function (grunt) {
                 strict: false,
                 node: true,
                 esnext: true,
+                scripturl:true,
                 globals: {
                     angular: true,
                     window: true

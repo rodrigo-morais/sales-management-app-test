@@ -29,9 +29,33 @@ define(["exports", "app"], function (exports, _app) {
                     this.userName = this._localStorageService.get("userName");
                 }
             }
+
+            this.menuItems = [{
+                text: "Total for sales man",
+                selected: false,
+                type: "pie"
+            }, {
+                text: "Total sales per month",
+                selected: false,
+                type: "bar"
+            }, {
+                text: "Top 5 sales orders",
+                selected: false,
+                type: "orders"
+            }, {
+                text: "Top 5 sales men",
+                selected: false,
+                type: "months"
+            }];
         }
 
         _createClass(HomeController, {
+            showChart: {
+                value: function showChart(menu) {
+                    alert("teste");
+                    alert(menu);
+                }
+            },
             logoff: {
                 value: function logoff() {
                     if (this._localStorageService.isSupported) {

@@ -6,7 +6,7 @@ body
 
 main
 {
-    width: 85%;
+    width: 100%;
     height: 95%;
     display: inline-block;
     position: relative;
@@ -18,13 +18,13 @@ main
 {
     position: absolute;
     top: 30%;
-    left: 45%;
+    left: 35%;
     margin-top: -50px;
     margin-left: -50px;
     background-color: #000000;
     color: #FFFFFF;
     width: 40%;
-    height: 47%;
+    height: 50%;
     border-radius: 25px;
     padding: 2%;
 }
@@ -39,4 +39,44 @@ main
 .login legend
 {
     color: #FFFFFF;
+}
+
+header
+{
+    position: relative;
+    float: left;
+    clear: both;
+    width: 100%;
+    height: 10%;
+    background-color: #000000;
+    color: #FFFFFF;
+    margin:0px!important;
+    padding: 1%;
+}
+
+header span
+{
+    position: relative;
+    float: right;
+    margin-right: 3%;
+    font-size: 16px;
+    padding-top: 0.5%;
+    font-family: sans-serif;
+}
+
+header form
+{
+    position: relative;
+    float: right;
+    margin-right: 2%;
+}
+
+.home
+{
+    position: relative;
+    float: left;
+    clear: both;
+    width: 100%;
+    height: 90%;
+    margin:0px!important;
 }
