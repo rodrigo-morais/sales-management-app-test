@@ -1,4 +1,4 @@
-define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angular-resource"], function (exports, _angular, _angularRoute, _angularAMD, _angularCSS, _angularResource) {
+define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angular-resource", "bootstrap", "components/footer/directives/footerDirective"], function (exports, _angular, _angularRoute, _angularAMD, _angularCSS, _angularResource, _bootstrap, _componentsFooterDirectivesFooterDirective) {
     "use strict";
 
     var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -12,6 +12,10 @@ define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angu
     var angularCss = _interopRequire(_angularCSS);
 
     var ngResource = _interopRequire(_angularResource);
+
+    var bootstrap = _interopRequire(_bootstrap);
+
+    var footerDirective = _interopRequire(_componentsFooterDirectivesFooterDirective);
 
     var app = angular.module("myApp", ["ngRoute", "ngResource", "door3.css"]);
 
@@ -33,6 +37,8 @@ define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angu
             controllerAs: "vm"
         }));
     }]);
+
+    app.directive("footerPage", [footerDirective]);
 
     return angularAMD.bootstrap(app);
 });

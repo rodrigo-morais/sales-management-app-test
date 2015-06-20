@@ -5,6 +5,8 @@ import ngRoute from 'angular-route';
 import angularAMD from 'angularAMD';
 import angularCss from 'angularCSS';
 import ngResource from 'angular-resource';
+import bootstrap from 'bootstrap';
+import footerDirective from "components/footer/directives/footerDirective";
 
 let app = angular.module('myApp', ['ngRoute', 'ngResource', 'door3.css']);
 
@@ -34,5 +36,7 @@ app.config([
 
   }
 ]);
+
+app.directive('footerPage', [footerDirective]);
 
 return angularAMD.bootstrap(app);
