@@ -1,0 +1,103 @@
+body
+{
+    margin: 0;
+    overflow: hidden;
+}
+
+main
+{
+    width: 85%;
+    height: 93%;
+    display: inline-block;
+    position: relative;
+    float: left;
+    overflow-y: auto;
+}
+
+main .internal-title
+{
+    margin-left: 2%;
+}
+
+main .principal
+{
+    margin-left: 2%;
+}
+
+main .data
+{
+    position: relative;
+    float: left;
+    clear: none;
+    display: inline-block;
+    width: 75%;
+    margin-bottom: 2%;
+}
+
+main .data div
+{
+    position: relative;
+    float: left;
+    clear: both;
+    display: inline-block;
+    width: 100%;
+}
+
+main .data div .field
+{
+    position: relative;
+    float: left;
+    clear: both;
+    display: inline-block;
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+main .data div .value
+{
+    position: relative;
+    float: left;
+    clear: both;
+    display: inline-block;
+    width: 100%;
+    font-size: 0.9em;
+    font-weight: normal;
+}
+
+main .principal .sub-title
+{
+    clear: left;
+}
+
+main .principal .section-code
+{
+    margin: 0 1% 1% 0;
+    clear: both;
+}
+
+main .principal .section-code p
+{
+    margin: 0;
+    font-style: italic;;
+    font-size: 0.8em;
+}
+
+main .principal .section-code pre
+{
+    margin: 0;
+    background-color: #F3F3F3;
+    position: relative;
+    float: left;
+}
+
+/**** member style ****/
+main .member .photo
+{
+    position: relative;
+    float: left;
+    clear: none;
+    display: inline-block;
+    width: 25%;
+}
+/**** member style ****/
