@@ -1,4 +1,4 @@
-define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angular-resource", "angular-local-storage", "bootstrap", "components/footer/directives/footerDirective", "components/menu/directives/rmMenuDirective", "components/graphs/directives/graphsDirective", "components/graphs/directives/salesListDirective"], function (exports, _angular, _angularRoute, _angularAMD, _angularCSS, _angularResource, _angularLocalStorage, _bootstrap, _componentsFooterDirectivesFooterDirective, _componentsMenuDirectivesRmMenuDirective, _componentsGraphsDirectivesGraphsDirective, _componentsGraphsDirectivesSalesListDirective) {
+define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angular-resource", "angular-local-storage", "bootstrap", "jquery-ui", "components/footer/directives/footerDirective", "components/menu/directives/rmMenuDirective", "components/graphs/directives/graphsDirective", "components/graphs/directives/salesListDirective"], function (exports, _angular, _angularRoute, _angularAMD, _angularCSS, _angularResource, _angularLocalStorage, _bootstrap, _jqueryUi, _componentsFooterDirectivesFooterDirective, _componentsMenuDirectivesRmMenuDirective, _componentsGraphsDirectivesGraphsDirective, _componentsGraphsDirectivesSalesListDirective) {
     "use strict";
 
     var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -16,6 +16,8 @@ define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angu
     var LocalStorageModule = _interopRequire(_angularLocalStorage);
 
     var bootstrap = _interopRequire(_bootstrap);
+
+    var jqueryUI = _interopRequire(_jqueryUi);
 
     var footerDirective = _interopRequire(_componentsFooterDirectivesFooterDirective);
 
@@ -50,7 +52,7 @@ define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angu
         }));
     }]);
 
-    app.directive("footerPage", [footerDirective]).directive("rmMenu", [rmMenuDirective]).directive("salesList", [salesListDirective]).directive("graphsList", [graphsDirective]);
+    app.directive("footerPage", [footerDirective]).directive("rmMenu", [rmMenuDirective]).directive("salesList", [salesListDirective]).directive("graphsList", ["$timeout", graphsDirective]);
 
     return angularAMD.bootstrap(app);
 });

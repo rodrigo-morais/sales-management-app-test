@@ -7,6 +7,7 @@ import angularCss from 'angularCSS';
 import ngResource from 'angular-resource';
 import LocalStorageModule from 'angular-local-storage';
 import bootstrap from 'bootstrap';
+import jqueryUI from 'jquery-ui';
 import footerDirective from "components/footer/directives/footerDirective";
 import rmMenuDirective from "components/menu/directives/rmMenuDirective";
 import graphsDirective from "components/graphs/directives/graphsDirective";
@@ -52,6 +53,6 @@ app
     .directive('footerPage', [footerDirective])
     .directive('rmMenu', [rmMenuDirective])
     .directive('salesList', [salesListDirective])
-    .directive('graphsList', [graphsDirective]);
+    .directive('graphsList', ['$timeout', graphsDirective]);
 
 return angularAMD.bootstrap(app);

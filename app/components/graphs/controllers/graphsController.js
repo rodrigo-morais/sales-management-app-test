@@ -30,7 +30,7 @@
     };
 
     $scope.close = (chart) => {
-        chart.visible = false;    
+        chart.visible = false;
     };
 };
 

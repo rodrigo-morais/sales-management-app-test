@@ -1,7 +1,7 @@
 define(["exports", "module"], function (exports, module) {
     "use strict";
 
-    var rmMenuController = function ($scope) {
+    var rmMenuController = function ($scope, $rootScope) {
 
         $scope.select = function (menu) {
             $scope.menus.forEach(function (_menu) {
@@ -9,10 +9,11 @@ define(["exports", "module"], function (exports, module) {
             });
             menu.selected = true;
             $scope.action(menu);
+            $rootScope.$broadcast("addChartEffect");
         };
     };
 
-    rmMenuController.$inject = ["$scope"];
+    rmMenuController.$inject = ["$scope", "$rootScope"];
 
     module.exports = rmMenuController;
 });

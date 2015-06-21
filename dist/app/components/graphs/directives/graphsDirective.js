@@ -5,7 +5,7 @@ define(["exports", "module", "components/graphs/controllers/graphsController"], 
 
     var graphsController = _interopRequire(_componentsGraphsControllersGraphsController);
 
-    var graphsDirective = function () {
+    var graphsDirective = function ($timeout) {
 
         var html = "app/components/graphs/templates/graphs.html";
 
@@ -20,11 +20,25 @@ define(["exports", "module", "components/graphs/controllers/graphsController"], 
                 maxWidth: "@"
             },
             controller: graphsController,
-            link: function link(scope, element, attrs, controller) {}
+            link: function link(scope, element, attrs, controller) {
+
+                scope.$on("addChartEffect", function () {
+                    $timeout(function () {
+                        $(".panel").draggable({
+                            grid: [5, 5],
+                            handle: ".panel-heading"
+                        }).resizable({
+                            grid: [5, 5]
+                        });
+                    }, 1000);
+                });
+
+                scope.$watch(scope.charts, function (newVal, oldVal) {
+                    scope.$broadcast("addChartEffect");
+                }, true);
+            }
         };
     };
-
-    graphsDirective.$inject = [];
 
     module.exports = graphsDirective;
 });

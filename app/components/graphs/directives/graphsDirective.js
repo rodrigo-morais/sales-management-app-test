@@ -1,6 +1,6 @@
 ﻿import graphsController from "components/graphs/controllers/graphsController";
 
-var graphsDirective = () => {
+var graphsDirective = ($timeout) => {
     
 
     let html = 'app/components/graphs/templates/graphs.html';
@@ -18,11 +18,23 @@ var graphsDirective = () => {
         controller: graphsController,
         link: function (scope, element, attrs, controller) {
 
+            scope.$on('addChartEffect', function(){
+                $timeout(function(){
+                    $('.panel').draggable({
+                        grid: [5,5],
+                        handle: ".panel-heading"
+                    }).resizable({
+                        grid: [5,5]
+                    });
+                }, 1000);
+            });
+
+            scope.$watch(scope.charts, function(newVal, oldVal){
+                scope.$broadcast('addChartEffect');
+            }, true);
             
         }
     };
 };
-
-graphsDirective.$inject = [];
 
 export default graphsDirective;

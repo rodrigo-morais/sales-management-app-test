@@ -1,4 +1,4 @@
-var rmMenuController = ($scope) => {
+var rmMenuController = ($scope, $rootScope) => {
 
     $scope.select = (menu) => {
         $scope.menus.forEach(function(_menu){
@@ -6,9 +6,10 @@ var rmMenuController = ($scope) => {
         });
         menu.selected = true;
         $scope.action(menu);
+        $rootScope.$broadcast('addChartEffect');
     };
 };
 
-rmMenuController.$inject = ['$scope'];
+rmMenuController.$inject = ['$scope', '$rootScope'];
 
 export default rmMenuController;
