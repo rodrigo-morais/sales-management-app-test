@@ -1,4 +1,4 @@
-define(["exports", "app"], function (exports, _app) {
+define(["exports", "app", "home/services/salesService"], function (exports, _app, _homeServicesSalesService) {
     "use strict";
 
     var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -13,47 +13,72 @@ define(["exports", "app"], function (exports, _app) {
 
     var app = _interopRequire(_app);
 
-    //import { LoginService } from "login/services/loginService";
+    var SalesService = _homeServicesSalesService.SalesService;
 
     var HomeController = (function () {
-        function HomeController($location, localStorageService) {
+        function HomeController($location, localStorageService, salesService) {
             _classCallCheck(this, HomeController);
+
+            var sessionId = null;
 
             this._location = $location;
             this._localStorageService = localStorageService;
+            this._service = salesService;
 
             if (this._localStorageService.isSupported) {
                 if (this._localStorageService.get("sessionId") === null) {
                     this._location.path("/");
                 } else {
                     this.userName = this._localStorageService.get("userName");
+                    sessionId = this._localStorageService.get("sessionId");
                 }
             }
 
-            this.charts = [{
-                text: "Total for sales man",
-                selected: false,
-                type: "pie",
-                data: [],
-                visible: true
-            }, {
-                text: "Total sales per month",
-                selected: false,
-                type: "bar",
-                data: [],
-                visible: true
-            }, {
-                text: "Top 5 sales orders",
-                selected: false,
-                type: "list",
-                data: [],
-                visible: true
-            }, {
-                text: "Top 5 sales men",
-                selected: false,
-                data: [],
-                visible: true
-            }];
+            this.charts = [];
+            var _this = this;
+            this._service.getTotalSalesMan(sessionId).then(function (data) {
+                _this.charts.push({
+                    text: "Total for sales man",
+                    selected: false,
+                    type: "pie",
+                    service: "totalSalesMan",
+                    data: data.data,
+                    visible: true
+                });
+            });
+
+            this._service.getTotalSalesMonth(sessionId).then(function (data) {
+                _this.charts.push({
+                    text: "Total sales per month",
+                    selected: false,
+                    type: "bar",
+                    service: "totalSalesMonth",
+                    data: data.data,
+                    visible: true
+                });
+            });
+
+            this._service.getTop5SalesOrders(sessionId).then(function (data) {
+                _this.charts.push({
+                    text: "Top 5 sales orders",
+                    selected: false,
+                    type: "list",
+                    service: "top5SalesOrders",
+                    data: data.data,
+                    visible: true
+                });
+            });
+
+            this._service.getTop5SalesMen(sessionId).then(function (data) {
+                _this.charts.push({
+                    text: "Top 5 sales men",
+                    selected: false,
+                    type: "list",
+                    service: "top5SalesMen",
+                    data: data.data,
+                    visible: true
+                });
+            });
         }
 
         _createClass(HomeController, {
@@ -75,10 +100,9 @@ define(["exports", "app"], function (exports, _app) {
         return HomeController;
     })();
 
-    HomeController.$inject = ["$location", "localStorageService"];
+    HomeController.$inject = ["$location", "localStorageService", "salesService"];
 
-    app.controller("homeController", HomeController);
-    //.service('loginService', LoginService);
+    app.controller("homeController", HomeController).service("salesService", SalesService);
 
     exports.HomeController = HomeController;
 });
