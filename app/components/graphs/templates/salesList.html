@@ -1,0 +1,20 @@
+﻿<ul>
+    <li class="array-header" data-ng:if="isArray(item.data[0])">
+        <span>Sales Man</span>
+        <span>Value</span>
+    </li>
+    <li class="array-value" data-ng:repeat="register in item.data" data-ng:if="isArray(register)">
+        <span>{{register[0]}}</span>
+        <span>US$ {{register[1]}}</span>
+    </li>
+    <li class="object-header" data-ng:if="isObject(item.data[0])">
+        <span>Sales Man</span>
+        <span>Value</span>
+        <span>Quantity</span>
+    </li>
+    <li class="object-value" data-ng:repeat="register in item.data" data-ng:if="isObject(register)">
+        <span>{{register.userName}}</span>
+        <span>US$ {{register.value}}</span>
+        <span>{{register.qty}}</span>
+    </li>
+</ul>

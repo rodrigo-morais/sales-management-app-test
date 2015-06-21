@@ -6,7 +6,11 @@
           <span class="glyphicon glyphicon-refresh" title="refresh" aria-hidden="true" data-ng:click="refresh(chart)"></span>
       </div>
       <div class="panel-body">
-        Panel content
+        <sales-list
+            data-ng:if="chart.type=='list'"
+            data-item=chart
+        >
+        </sales-list>
       </div>
     </div>
 </div>

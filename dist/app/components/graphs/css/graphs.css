@@ -19,3 +19,63 @@
     margin-right: 2%;
     cursor: pointer;
 }
+
+.graphs .panel ul
+{
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.graphs .panel ul li
+{
+    width: 100%;
+    position: relative;
+    float: left;
+    clear: both;
+    line-height: 2em;
+}
+
+.graphs .panel ul li.array-header span
+{
+    position: relative;
+    float: left;
+    width: 48%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: solid 1px;
+}
+
+.graphs .panel ul li.array-value span
+{
+    position: relative;
+    float: left;
+    width: 48%;
+    font-size: 14px;
+    padding-left: 4%;
+}
+
+.graphs .panel ul li.object-header span
+{
+    position: relative;
+    float: left;
+    width: 30%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: solid 1px;
+}
+
+.graphs .panel ul li.object-value span
+{
+    position: relative;
+    float: left;
+    width: 30%;
+    font-size: 14px;
+    padding-left: 4%;
+}
