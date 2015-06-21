@@ -22,6 +22,32 @@ define(["exports", "module", "components/graphs/controllers/graphsController"], 
             controller: graphsController,
             link: function link(scope, element, attrs, controller) {
 
+                scope.pieConfig = {
+                    title: "",
+                    tooltips: true,
+                    labels: false,
+                    mouseover: function mouseover() {},
+                    mouseout: function mouseout() {},
+                    click: function click() {},
+                    legend: {
+                        display: true,
+                        position: "right"
+                    }
+                };
+
+                scope.barConfig = {
+                    title: "",
+                    tooltips: true,
+                    labels: false,
+                    mouseover: function mouseover() {},
+                    mouseout: function mouseout() {},
+                    click: function click() {},
+                    legend: {
+                        display: false,
+                        position: "right"
+                    }
+                };
+
                 scope.$on("addChartEffect", function () {
                     $timeout(function () {
                         $(".panel").draggable({

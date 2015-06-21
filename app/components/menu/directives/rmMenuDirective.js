@@ -11,8 +11,8 @@ var rmMenuDirective = () => {
         css: 'app/components/menu/css/menu.css',
         replace: true,
         scope:{
-            menus: '=',
-            action: '='
+            menus: '='/*,
+            action: '='*/
         },
         controller: rmMenuController,
         link: function (scope, element, attrs, controller) {

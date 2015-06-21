@@ -16,7 +16,9 @@ define(["exports", "app", "login/services/loginService"], function (exports, _ap
     var LoginService = _loginServicesLoginService.LoginService;
 
     var LoginController = (function () {
-        function LoginController($location, loginService, localStorageService) {
+        function LoginController($location, $rootScope, loginService, localStorageService) {
+            var _this = this;
+
             _classCallCheck(this, LoginController);
 
             this._service = loginService;
@@ -24,9 +26,21 @@ define(["exports", "app", "login/services/loginService"], function (exports, _ap
             this._localStorageService = localStorageService;
             this.userName = "";
             this.password = "";
+            this._rootScope = $rootScope;
+
+            this._rootScope.logged = false;
+            this._rootScope.menus = [];
+            this._rootScope.userName = "";
+            this._rootScope.logoff = function () {
+                if (_this._localStorageService.isSupported) {
+                    _this._localStorageService.remove("userName", "sessionId");
+                    _this._location.path("/");
+                }
+            };
 
             if (this._localStorageService.isSupported) {
                 if (this._localStorageService.get("sessionId") !== null) {
+                    this._rootScope.userName = this._localStorageService.get("userName");
                     this._location.path("/home");
                 }
             }
@@ -47,6 +61,8 @@ define(["exports", "app", "login/services/loginService"], function (exports, _ap
                             if (_this._localStorageService.isSupported) {
                                 _this._localStorageService.set("userName", _this.userName);
                                 _this._localStorageService.set("sessionId", data.sessionId);
+                                _this._rootScope.userName = _this.userName;
+                                _this._rootScope.logged = true;
                                 _this._location.path("/home");
                             }
                         } else {
@@ -60,7 +76,7 @@ define(["exports", "app", "login/services/loginService"], function (exports, _ap
         return LoginController;
     })();
 
-    LoginController.$inject = ["$location", "loginService", "localStorageService"];
+    LoginController.$inject = ["$location", "$rootScope", "loginService", "localStorageService"];
 
     app.controller("loginController", LoginController).service("loginService", LoginService);
 

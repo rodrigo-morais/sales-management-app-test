@@ -6,7 +6,19 @@
         <link href="vendor/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet" />
     </head>
     <body data-ng-cloak>
+        <header class="row" data-ng:if="logged">
+            <form>
+                <fieldset>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-default" data-ng:click="logoff()">Logoff</button>
+                    </div>
+                </fieldset>
+            </form>
+            <span>User: {{userName}}</span>
+        </header>
         <main ng-view></main>
+        <rm-menu data-menus="menus" data-ng:if="logged">
+        </rm-menu>
         <footer-page></footer-page>
         <script data-main="app/main.js"
             src="vendor/requirejs/require.js"

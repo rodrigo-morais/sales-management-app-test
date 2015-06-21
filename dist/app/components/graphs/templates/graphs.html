@@ -11,6 +11,22 @@
                 data-item=chart
             >
             </sales-list>
+            <div 
+                data-ac-chart="chart.type" 
+                data-ac-data="chart.data" 
+                data-ac-config="pieConfig" 
+                class="chart"
+                data-ng:if="chart.type=='pie'"
+            >
+            </div>
+            <div 
+                data-ac-chart="chart.type" 
+                data-ac-data="chart.data" 
+                data-ac-config="barConfig" 
+                class="chart"
+                data-ng:if="chart.type=='bar'"
+            >
+            </div>
         </div>
     </div>
 </div>

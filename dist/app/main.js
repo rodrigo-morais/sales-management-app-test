@@ -1,3 +1,5 @@
+/// <reference path="../vendor/d3/d3.min.js" />
+/// <reference path="../vendor/angular-charts/dist/angular-charts.min.js" />
 requirejs.config({
     "baseUrl": "/app",
     "urlArgs": "v=1.0",
@@ -10,6 +12,8 @@ requirejs.config({
         'angularAMD': '../vendor/angularAMD/angularAMD',
         'angularCSS': '../vendor/angular-css/angular-css',
         'angular-local-storage': '../vendor/angular-local-storage/dist/angular-local-storage.min',
+        'd3': '../vendor/d3/d3.min',
+        'angular-charts': '../vendor/angular-charts/dist/angular-charts',
         'bootstrap': '../vendor/bootstrap/dist/js/bootstrap.min',
         'moment': '../vendor/moment/moment'
     },
@@ -33,6 +37,10 @@ requirejs.config({
         'angularCSS': {
             exports: "angularCSS",
             deps: ["angular"]
+        },
+        'angular-charts': {
+            exports: "angular-charts",
+            deps: ["angular", "d3"]
         },
         'angularAMD': ['angular'],
         'bootstrap':

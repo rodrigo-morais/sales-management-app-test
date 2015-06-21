@@ -15,8 +15,8 @@ define(["exports", "module", "components/menu/controllers/rmMenuController"], fu
             css: "app/components/menu/css/menu.css",
             replace: true,
             scope: {
-                menus: "=",
-                action: "="
+                menus: "=" /*,
+                           action: '='*/
             },
             controller: rmMenuController,
             link: function link(scope, element, attrs, controller) {

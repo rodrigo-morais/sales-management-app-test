@@ -13,13 +13,6 @@
     display: inline-block;
 }
 
-.graphs span
-{
-    float: right;
-    margin-right: 2%;
-    cursor: pointer;
-}
-
 .graphs .panel ul
 {
     display: inline-block;

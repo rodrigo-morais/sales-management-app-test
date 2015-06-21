@@ -1,0 +1,19 @@
+﻿<section class="home">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {{vm.chart.text}}
+            <span class="glyphicon glyphicon-remove-circle" title="close" aria-hidden="true" data-ng:click="close(chart)"></span>
+            <span class="glyphicon glyphicon-refresh" title="refresh" aria-hidden="true" data-ng:click="refresh(chart)"></span>
+        </div>
+        <div class="panel-body">
+            <div 
+                data-ac-chart="vm.chart.type" 
+                data-ac-data="vm.chart.data" 
+                data-ac-config="vm.pieConfig" 
+                class="chart"
+                data-ng:if="vm.chart.type=='pie'"
+            >
+            </div>
+        </div>
+    </div>
+</section>

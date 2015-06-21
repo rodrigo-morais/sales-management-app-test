@@ -18,6 +18,32 @@ var graphsDirective = ($timeout) => {
         controller: graphsController,
         link: function (scope, element, attrs, controller) {
 
+            scope.pieConfig = {
+                title: '',
+                tooltips: true,
+                labels: false,
+                mouseover: function() {},
+                mouseout: function() {},
+                click: function() {},
+                legend: {
+                    display: true,
+                    position: 'right'
+                }
+            };
+
+            scope.barConfig = {
+                title: '',
+                tooltips: true,
+                labels: false,
+                mouseover: function() {},
+                mouseout: function() {},
+                click: function() {},
+                legend: {
+                    display: false,
+                    position: 'right'
+                }
+            };
+
             scope.$on('addChartEffect', function(){
                 $timeout(function(){
                     $('.panel').draggable({

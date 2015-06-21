@@ -1,4 +1,4 @@
-define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angular-resource", "angular-local-storage", "bootstrap", "jquery-ui", "components/footer/directives/footerDirective", "components/menu/directives/rmMenuDirective", "components/graphs/directives/graphsDirective", "components/graphs/directives/salesListDirective"], function (exports, _angular, _angularRoute, _angularAMD, _angularCSS, _angularResource, _angularLocalStorage, _bootstrap, _jqueryUi, _componentsFooterDirectivesFooterDirective, _componentsMenuDirectivesRmMenuDirective, _componentsGraphsDirectivesGraphsDirective, _componentsGraphsDirectivesSalesListDirective) {
+define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angular-resource", "angular-local-storage", "angular-charts", "bootstrap", "jquery-ui", "components/footer/directives/footerDirective", "components/menu/directives/rmMenuDirective", "components/graphs/directives/graphsDirective", "components/graphs/directives/salesListDirective"], function (exports, _angular, _angularRoute, _angularAMD, _angularCSS, _angularResource, _angularLocalStorage, _angularCharts, _bootstrap, _jqueryUi, _componentsFooterDirectivesFooterDirective, _componentsMenuDirectivesRmMenuDirective, _componentsGraphsDirectivesGraphsDirective, _componentsGraphsDirectivesSalesListDirective) {
     "use strict";
 
     var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -15,6 +15,8 @@ define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angu
 
     var LocalStorageModule = _interopRequire(_angularLocalStorage);
 
+    var angularCharts = _interopRequire(_angularCharts);
+
     var bootstrap = _interopRequire(_bootstrap);
 
     var jqueryUI = _interopRequire(_jqueryUi);
@@ -27,7 +29,7 @@ define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angu
 
     var salesListDirective = _interopRequire(_componentsGraphsDirectivesSalesListDirective);
 
-    var app = angular.module("myApp", ["ngRoute", "ngResource", "door3.css", "LocalStorageModule"]);
+    var app = angular.module("myApp", ["ngRoute", "ngResource", "door3.css", "LocalStorageModule", "angularCharts"]);
 
     app.config(function (localStorageServiceProvider) {
         localStorageServiceProvider.setPrefix("myApp").setStorageType("sessionStorage").setNotify(false, false);
@@ -43,6 +45,11 @@ define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angu
             templateUrl: "app/home/templates/home.html",
             controller: "homeController",
             controllerUrl: "home/controllers/homeController",
+            controllerAs: "vm"
+        })).when("/totalSalesMan", angularAMD.route({
+            templateUrl: "app/totalSalesMan/templates/totalSalesMan.html",
+            controller: "totalSalesManController",
+            controllerUrl: "totalSalesMan/controllers/totalSalesManController",
             controllerAs: "vm"
         })).otherwise(angularAMD.route({
             templateUrl: "app/login/templates/login.html",

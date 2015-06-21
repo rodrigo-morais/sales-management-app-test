@@ -16,7 +16,9 @@ define(["exports", "app", "home/services/salesService"], function (exports, _app
     var SalesService = _homeServicesSalesService.SalesService;
 
     var HomeController = (function () {
-        function HomeController($location, localStorageService, salesService) {
+        function HomeController($location, $rootScope, localStorageService, salesService) {
+            var _this2 = this;
+
             _classCallCheck(this, HomeController);
 
             var sessionId = null;
@@ -24,13 +26,26 @@ define(["exports", "app", "home/services/salesService"], function (exports, _app
             this._location = $location;
             this._localStorageService = localStorageService;
             this._service = salesService;
+            this._rootScope = $rootScope;
+            if (!this._rootScope.logoff) {
+                this._rootScope.logoff = function () {
+                    if (_this2._localStorageService.isSupported) {
+                        _this2._localStorageService.remove("userName", "sessionId");
+                        _this2._location.path("/");
+                    }
+                };
+            }
 
             if (this._localStorageService.isSupported) {
                 if (this._localStorageService.get("sessionId") === null) {
+                    this._rootScope.logged = false;
+                    this._rootScope.menus = [];
                     this._location.path("/");
                 } else {
                     this.userName = this._localStorageService.get("userName");
                     sessionId = this._localStorageService.get("sessionId");
+                    this._rootScope.userName = this.userName;
+                    this._rootScope.logged = true;
                 }
             }
 
@@ -42,41 +57,47 @@ define(["exports", "app", "home/services/salesService"], function (exports, _app
                     selected: false,
                     type: "pie",
                     service: "totalSalesMan",
-                    data: data.data,
-                    visible: true
+                    data: data,
+                    visible: true,
+                    url: "/#totalSalesMan"
                 });
-            });
-
-            this._service.getTotalSalesMonth(sessionId).then(function (data) {
-                _this.charts.push({
-                    text: "Total sales per month",
-                    selected: false,
-                    type: "bar",
-                    service: "totalSalesMonth",
-                    data: data.data,
-                    visible: true
-                });
-            });
-
-            this._service.getTop5SalesOrders(sessionId).then(function (data) {
-                _this.charts.push({
-                    text: "Top 5 sales orders",
-                    selected: false,
-                    type: "list",
-                    service: "top5SalesOrders",
-                    data: data.data,
-                    visible: true
-                });
-            });
-
-            this._service.getTop5SalesMen(sessionId).then(function (data) {
-                _this.charts.push({
-                    text: "Top 5 sales men",
-                    selected: false,
-                    type: "list",
-                    service: "top5SalesMen",
-                    data: data.data,
-                    visible: true
+                _this._service.getTotalSalesMonth(sessionId).then(function (data) {
+                    _this.charts.push({
+                        text: "Total sales per month",
+                        selected: false,
+                        type: "bar",
+                        service: "totalSalesMonth",
+                        data: data,
+                        visible: true
+                    });
+                    _this._service.getTop5SalesOrders(sessionId).then(function (data) {
+                        _this.charts.push({
+                            text: "Top 5 sales orders",
+                            selected: false,
+                            type: "list",
+                            service: "top5SalesOrders",
+                            data: data.data,
+                            visible: true
+                        });
+                        _this._service.getTop5SalesMen(sessionId).then(function (data) {
+                            _this.charts.push({
+                                text: "Top 5 sales men",
+                                selected: false,
+                                type: "list",
+                                service: "top5SalesMen",
+                                data: data.data,
+                                visible: true
+                            });
+                            _this._rootScope.menus = JSON.parse(JSON.stringify(_this.charts));
+                            _this._rootScope.menus.unshift({
+                                text: "Home",
+                                selected: true,
+                                visible: true,
+                                url: "/#home"
+                            });
+                            _this._localStorageService.set("charts", _this.charts);
+                        });
+                    });
                 });
             });
         }
@@ -86,21 +107,13 @@ define(["exports", "app", "home/services/salesService"], function (exports, _app
                 value: function showChart(menu) {
                     menu.visible = true;
                 }
-            },
-            logoff: {
-                value: function logoff() {
-                    if (this._localStorageService.isSupported) {
-                        this._localStorageService.remove("userName", "sessionId");
-                        this._location.path("/");
-                    }
-                }
             }
         });
 
         return HomeController;
     })();
 
-    HomeController.$inject = ["$location", "localStorageService", "salesService"];
+    HomeController.$inject = ["$location", "$rootScope", "localStorageService", "salesService"];
 
     app.controller("homeController", HomeController).service("salesService", SalesService);
 

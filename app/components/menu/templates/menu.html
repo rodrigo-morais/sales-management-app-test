@@ -7,7 +7,7 @@
             data-ng:repeat="menu in menus"
             data-ng:click="select(menu)"
         >
-            <a
+            <a href="{{menu.url}}"
                 data-ng:class="{'selected': menu.selected}"
             >
                 {{ menu.text }}

@@ -8,7 +8,7 @@ define(["exports", "module"], function (exports, module) {
                 _menu.selected = false;
             });
             menu.selected = true;
-            $scope.action(menu);
+            //$scope.action(menu);
             $rootScope.$broadcast("addChartEffect");
         };
     };

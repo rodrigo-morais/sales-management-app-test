@@ -6,6 +6,7 @@ import angularAMD from 'angularAMD';
 import angularCss from 'angularCSS';
 import ngResource from 'angular-resource';
 import LocalStorageModule from 'angular-local-storage';
+import angularCharts from 'angular-charts';
 import bootstrap from 'bootstrap';
 import jqueryUI from 'jquery-ui';
 import footerDirective from "components/footer/directives/footerDirective";
@@ -13,7 +14,7 @@ import rmMenuDirective from "components/menu/directives/rmMenuDirective";
 import graphsDirective from "components/graphs/directives/graphsDirective";
 import salesListDirective from "components/graphs/directives/salesListDirective";
 
-let app = angular.module('myApp', ['ngRoute', 'ngResource', 'door3.css', 'LocalStorageModule']);
+let app = angular.module('myApp', ['ngRoute', 'ngResource', 'door3.css', 'LocalStorageModule', 'angularCharts']);
 
 app.config(function (localStorageServiceProvider) {
     localStorageServiceProvider
@@ -37,6 +38,12 @@ app.config([
               templateUrl: 'app/home/templates/home.html',
               controller: 'homeController',
               controllerUrl: 'home/controllers/homeController',
+              controllerAs: 'vm'
+          })).
+          when('/totalSalesMan',  angularAMD.route({
+              templateUrl: 'app/totalSalesMan/templates/totalSalesMan.html',
+              controller: 'totalSalesManController',
+              controllerUrl: 'totalSalesMan/controllers/totalSalesManController',
               controllerAs: 'vm'
           })).
           otherwise(angularAMD.route({
