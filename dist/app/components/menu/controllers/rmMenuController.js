@@ -2,7 +2,6 @@ define(["exports", "module"], function (exports, module) {
     "use strict";
 
     var rmMenuController = function ($scope) {
-        //$scope.menus = $scope.vm.menuItems;
 
         $scope.select = function (menu) {
             $scope.menus.forEach(function (_menu) {

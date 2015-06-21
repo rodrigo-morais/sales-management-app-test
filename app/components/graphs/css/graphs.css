@@ -1,0 +1,21 @@
+﻿.graphs
+{
+    position: relative;
+    float: left;
+    clear: none;
+}
+
+.graphs .panel
+{
+    width: 48%!important;
+    height: 46%!important;
+    margin: 1%!important;
+    display: inline-block;
+}
+
+.graphs span
+{
+    float: right;
+    margin-right: 2%;
+    cursor: pointer;
+}

@@ -15,33 +15,39 @@ class HomeController {
             }
         }
 
-        this.menuItems = [
+        this.charts = [
             {
                 "text": "Total for sales man",
                 "selected": false,
-                "type": 'pie'
+                "type": 'pie',
+                "data": [],
+                "visible": true
             },
             {
                 "text": "Total sales per month",
                 "selected": false,
-                "type": 'bar'
+                "type": 'bar',
+                "data": [],
+                "visible": true
             },
             {
                 "text": "Top 5 sales orders",
                 "selected": false,
-                "type": 'orders'
+                "type": 'list',
+                "data": [],
+                "visible": true
             },
             {
                 "text": "Top 5 sales men",
                 "selected": false,
-                "type": 'months'
+                "data": [],
+                "visible": true
             }
         ];
     }
 
     showChart(menu){
-        alert('teste');
-        alert(menu);
+        menu.visible = true;
     }
 
     logoff(){

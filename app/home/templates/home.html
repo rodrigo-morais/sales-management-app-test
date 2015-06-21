@@ -9,6 +9,7 @@
     <span>User: {{vm.userName}}</span>
 </header>
 <section class="home">
-    <rm-menu data-menus="vm.menuItems" data-action=vm.showChart>
+    <graphs-list data-charts="vm.charts" data-max:width="80%" data-max:height="100%"></graphs-list>
+    <rm-menu data-menus="vm.charts" data-action=vm.showChart>
     </rm-menu>
 </section>

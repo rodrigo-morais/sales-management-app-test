@@ -1,4 +1,4 @@
-define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angular-resource", "angular-local-storage", "bootstrap", "components/footer/directives/footerDirective", "components/menu/directives/rmMenuDirective"], function (exports, _angular, _angularRoute, _angularAMD, _angularCSS, _angularResource, _angularLocalStorage, _bootstrap, _componentsFooterDirectivesFooterDirective, _componentsMenuDirectivesRmMenuDirective) {
+define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angular-resource", "angular-local-storage", "bootstrap", "components/footer/directives/footerDirective", "components/menu/directives/rmMenuDirective", "components/graphs/directives/graphsDirective"], function (exports, _angular, _angularRoute, _angularAMD, _angularCSS, _angularResource, _angularLocalStorage, _bootstrap, _componentsFooterDirectivesFooterDirective, _componentsMenuDirectivesRmMenuDirective, _componentsGraphsDirectivesGraphsDirective) {
     "use strict";
 
     var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -20,6 +20,8 @@ define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angu
     var footerDirective = _interopRequire(_componentsFooterDirectivesFooterDirective);
 
     var rmMenuDirective = _interopRequire(_componentsMenuDirectivesRmMenuDirective);
+
+    var graphsDirective = _interopRequire(_componentsGraphsDirectivesGraphsDirective);
 
     var app = angular.module("myApp", ["ngRoute", "ngResource", "door3.css", "LocalStorageModule"]);
 
@@ -46,7 +48,7 @@ define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angu
         }));
     }]);
 
-    app.directive("footerPage", [footerDirective]).directive("rmMenu", [rmMenuDirective]);
+    app.directive("footerPage", [footerDirective]).directive("rmMenu", [rmMenuDirective]).directive("graphsList", [graphsDirective]);
 
     return angularAMD.bootstrap(app);
 });

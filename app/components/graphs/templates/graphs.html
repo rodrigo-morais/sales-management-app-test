@@ -1,0 +1,12 @@
+﻿<div class="graphs" data-ng:style="{'width':maxWidth, 'height':maxHeight}">
+    <div class="panel panel-default" data-ng:repeat="chart in charts" data-ng:if="chart.visible">
+      <div class="panel-heading">
+          {{chart.text}}
+          <span class="glyphicon glyphicon-remove-circle" title="close" aria-hidden="true" data-ng:click="close(chart)"></span>
+          <span class="glyphicon glyphicon-refresh" title="refresh" aria-hidden="true"></span>
+      </div>
+      <div class="panel-body">
+        Panel content
+      </div>
+    </div>
+</div>
