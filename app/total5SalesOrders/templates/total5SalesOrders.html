@@ -5,14 +5,11 @@
             <span class="glyphicon glyphicon-refresh" title="refresh" aria-hidden="true" data-ng:click="vm.refresh()"></span>
         </div>
         <div class="panel-body">
-            <div 
-                data-ac-chart="vm.chart.type" 
-                data-ac-data="vm.chart.data" 
-                data-ac-config="vm.pieConfig" 
-                class="chart"
-                data-ng:if="vm.chart.type=='pie'"
+            <sales-list
+                data-ng:if="vm.chart.type=='list'"
+                data-item=vm.chart
             >
-            </div>
+            </sales-list>
         </div>
     </div>
 </section>

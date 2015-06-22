@@ -21,7 +21,6 @@ define(["exports", "module", "components/graphs/controllers/graphsController"], 
             },
             controller: graphsController,
             link: function link(scope, element, attrs, controller) {
-
                 scope.pieConfig = {
                     title: "",
                     tooltips: true,

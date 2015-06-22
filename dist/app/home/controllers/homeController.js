@@ -68,7 +68,8 @@ define(["exports", "app", "home/services/salesService"], function (exports, _app
                         type: "bar",
                         service: "totalSalesMonth",
                         data: data,
-                        visible: true
+                        visible: true,
+                        url: "/#totalSalesMonth"
                     });
                     _this._service.getTop5SalesOrders(sessionId).then(function (data) {
                         _this.charts.push({
@@ -77,7 +78,8 @@ define(["exports", "app", "home/services/salesService"], function (exports, _app
                             type: "list",
                             service: "top5SalesOrders",
                             data: data.data,
-                            visible: true
+                            visible: true,
+                            url: "/#total5SalesOrders"
                         });
                         _this._service.getTop5SalesMen(sessionId).then(function (data) {
                             _this.charts.push({
@@ -86,7 +88,8 @@ define(["exports", "app", "home/services/salesService"], function (exports, _app
                                 type: "list",
                                 service: "top5SalesMen",
                                 data: data.data,
-                                visible: true
+                                visible: true,
+                                url: "/#top5SalesMen"
                             });
                             _this._rootScope.menus = JSON.parse(JSON.stringify(_this.charts));
                             _this._rootScope.menus.unshift({

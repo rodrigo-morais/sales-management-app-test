@@ -1,7 +1,7 @@
 ﻿import app from 'app';
 import { SalesService } from "home/services/salesService";
 
-class TotalSalesManController {
+class TotalSalesMonthController {
     constructor($location, $rootScope, $timeout, localStorageService, salesService){
         let sessionId = null,
             _this = this;
@@ -53,7 +53,7 @@ class TotalSalesManController {
                 }
                 this._rootScope.logged = true;
 
-                this.chart = this._localStorageService.get('charts')[0];
+                this.chart = this._localStorageService.get('charts')[1];
             }
         }
 
@@ -89,17 +89,17 @@ class TotalSalesManController {
             sessionId = this._localStorageService.get('sessionId');
         }
 
-        this._service.getTotalSalesMan(sessionId).then(function(data){
+        this._service.getTotalSalesMonth(sessionId).then(function(data){
             _this._refreshChart(data);
         });
     }
 
 }
 
-TotalSalesManController.$inject = ['$location', '$rootScope', '$timeout', 'localStorageService', 'salesService'];
+TotalSalesMonthController.$inject = ['$location', '$rootScope', '$timeout', 'localStorageService', 'salesService'];
 
 app
-    .controller('totalSalesManController', TotalSalesManController)
+    .controller('totalSalesMonthController', TotalSalesMonthController)
     .service('salesService', SalesService);
 
-export { TotalSalesManController };
+export { TotalSalesMonthController };

@@ -17,7 +17,6 @@ var graphsDirective = ($timeout) => {
         },
         controller: graphsController,
         link: function (scope, element, attrs, controller) {
-
             scope.pieConfig = {
                 title: '',
                 tooltips: true,
@@ -58,7 +57,6 @@ var graphsDirective = ($timeout) => {
             scope.$watch(scope.charts, function(newVal, oldVal){
                 scope.$broadcast('addChartEffect');
             }, true);
-            
         }
     };
 };

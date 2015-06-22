@@ -51,6 +51,21 @@ define(["exports", "angular", "angular-route", "angularAMD", "angularCSS", "angu
             controller: "totalSalesManController",
             controllerUrl: "totalSalesMan/controllers/totalSalesManController",
             controllerAs: "vm"
+        })).when("/totalSalesMonth", angularAMD.route({
+            templateUrl: "app/totalSalesMonth/templates/totalSalesMonth.html",
+            controller: "totalSalesMonthController",
+            controllerUrl: "totalSalesMonth/controllers/totalSalesMonthController",
+            controllerAs: "vm"
+        })).when("/total5SalesOrders", angularAMD.route({
+            templateUrl: "app/total5SalesOrders/templates/total5SalesOrders.html",
+            controller: "total5SalesOrdersController",
+            controllerUrl: "total5SalesOrders/controllers/total5SalesOrdersController",
+            controllerAs: "vm"
+        })).when("/top5SalesMen", angularAMD.route({
+            templateUrl: "app/top5SalesMen/templates/top5SalesMen.html",
+            controller: "top5SalesMenController",
+            controllerUrl: "top5SalesMen/controllers/top5SalesMenController",
+            controllerAs: "vm"
         })).otherwise(angularAMD.route({
             templateUrl: "app/login/templates/login.html",
             controller: "loginController",

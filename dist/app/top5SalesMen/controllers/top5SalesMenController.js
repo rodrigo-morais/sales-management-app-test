@@ -15,11 +15,11 @@ define(["exports", "app", "home/services/salesService"], function (exports, _app
 
     var SalesService = _homeServicesSalesService.SalesService;
 
-    var TotalSalesManController = (function () {
-        function TotalSalesManController($location, $rootScope, $timeout, localStorageService, salesService) {
+    var Top5SalesMen = (function () {
+        function Top5SalesMen($location, $rootScope, $timeout, localStorageService, salesService) {
             var _this2 = this;
 
-            _classCallCheck(this, TotalSalesManController);
+            _classCallCheck(this, Top5SalesMen);
 
             var sessionId = null,
                 _this = this;
@@ -70,7 +70,7 @@ define(["exports", "app", "home/services/salesService"], function (exports, _app
                     }
                     this._rootScope.logged = true;
 
-                    this.chart = this._localStorageService.get("charts")[0];
+                    this.chart = this._localStorageService.get("charts")[3];
                 }
             }
 
@@ -90,7 +90,7 @@ define(["exports", "app", "home/services/salesService"], function (exports, _app
             }, true);
         }
 
-        _createClass(TotalSalesManController, {
+        _createClass(Top5SalesMen, {
             _refreshChart: {
                 value: function _refreshChart(data) {
                     var _this = this;
@@ -109,19 +109,19 @@ define(["exports", "app", "home/services/salesService"], function (exports, _app
                         sessionId = this._localStorageService.get("sessionId");
                     }
 
-                    this._service.getTotalSalesMan(sessionId).then(function (data) {
-                        _this._refreshChart(data);
+                    this._service.getTop5SalesMen(sessionId).then(function (data) {
+                        _this._refreshChart(data.data);
                     });
                 }
             }
         });
 
-        return TotalSalesManController;
+        return Top5SalesMen;
     })();
 
-    TotalSalesManController.$inject = ["$location", "$rootScope", "$timeout", "localStorageService", "salesService"];
+    Top5SalesMen.$inject = ["$location", "$rootScope", "$timeout", "localStorageService", "salesService"];
 
-    app.controller("totalSalesManController", TotalSalesManController).service("salesService", SalesService);
+    app.controller("top5SalesMenController", Top5SalesMen).service("salesService", SalesService);
 
-    exports.TotalSalesManController = TotalSalesManController;
+    exports.Top5SalesMen = Top5SalesMen;
 });
